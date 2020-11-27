@@ -17,10 +17,14 @@ db.connect(function(err){
 
 
 app.get("/", (req, res) =>{
-
     const sqlInsert = "SELECT * FROM 'reviewtable';"
     db.query(sqlInsert,(err, result)=> {
-        res.send(result);
+        if(!err) {
+            res.send(result);
+        }
+        else {
+            console.log("***---> ", err);
+        }
     })
 });
 
